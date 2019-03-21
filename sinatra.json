@@ -1,0 +1,4 @@
+{
+    "directory" : "/tmp/tst",
+    "baseurl" : "http://localhost/mysite"
+}

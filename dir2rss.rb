@@ -5,8 +5,6 @@ require 'optparse'
 require 'pp'
 require 'rss'
 
-# yum install rubygem-bundler
-
 
 def filesize(size)
   units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'Pib', 'EiB']
