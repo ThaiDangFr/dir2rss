@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export scriptpath=$(dirname $0)
+export scriptpath=$(realpath -s $(dirname $0))
 cd ${scriptpath}
 
 PIDFILE=${scriptpath}/dir2rss.pid
