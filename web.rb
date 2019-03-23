@@ -1,23 +1,19 @@
 #!/usr/bin/env ruby
-#yum install rubygem-sinatra
 
 require 'sinatra'
 require 'json'
 require 'open3'
+require_relative 'dir2rss'
 
-hash = JSON.parse(File.read("sinatra.json"))
+
+hash = JSON.parse(File.read("web.json"))
 directory = hash["directory"]
 baseurl = hash["baseurl"]
 
 get '/' do
-  stdout, stderr, status = Open3.capture3("./dir2rss.rb --directory #{directory} --baseURL #{baseurl}")
-
-  if status.success?
-    content_type 'application/rss+xml'
-    stdout
-  else
-    raise stderr
-  end
+  dir2rss = Dir2rss.new(directory, baseurl)
+  content_type 'application/rss+xml'
+  dir2rss.mkvrss
 end
 
 
